@@ -38,3 +38,14 @@ test.describe('Homepage Navigation', () => {
   });
 
 });
+
+test.describe('Products and Filters', () => {
+
+  test('Should Navigate to Each Page & return home', async ({ page }) => {
+    const homePage = new HomePage(page);
+    await homePage.navigateToContact();
+    await homePage.returnHome();
+    await homePage.navigateToLogin();
+    await homePage.returnHome();
+  });
+});

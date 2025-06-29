@@ -21,10 +21,12 @@ export class HomePage {
   private categoryNavSpecialTools: Locator;
   private categoryNavRentals: Locator;
 
-
   private filters: Locator;
   private filtersBtn: Locator;
   private productContainer: Locator;
+
+  private firstProduct: Locator;
+    static firstProduct: any;
 
 
 
