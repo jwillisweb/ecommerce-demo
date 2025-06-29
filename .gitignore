@@ -1,0 +1,18 @@
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# Node.js
+node_modules
+.env
+
+# Playwright
+playwright-report
+test-results
+
+# VSCode (optional)
+.vscode
