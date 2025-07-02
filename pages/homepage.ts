@@ -56,20 +56,32 @@ export class HomePage {
 
 
   //SMOKE TESTS
-  async mobileSmoke() {
-    await this.page.setViewportSize({ width: 375, height: 812 });
-    await this.page.goto('https://practicesoftwaretesting.com/');
+async mobileSmoke() {
+  await this.page.setViewportSize({ width: 375, height: 812 });
 
-    await(this.returnHome)();
-    await expect(this.headerBtn).toBeVisible();
-    await expect(this.bannerImg).toBeVisible();
-    await expect(this.filtersBtn).toBeVisible();
-    await expect(this.productContainer).toBeVisible();
-  }
+  // Collect all responses during page load
+  const responses: Response[] = [];
+  this.page.on('response', response => responses.push(response));
+
+  const response = await this.page.goto('https://practicesoftwaretesting.com/');
+  expect(response?.status()).toBe(200);
+
+  await(this.returnHome)();
+  await expect(this.headerBtn).toBeVisible();
+  await expect(this.bannerImg).toBeVisible();
+  await expect(this.filtersBtn).toBeVisible();
+  await expect(this.productContainer).toBeVisible();
+}
 
   async desktopSmoke() {
     await this.page.setViewportSize({ width: 1280, height: 800 });
-    await this.page.goto('https://practicesoftwaretesting.com/');
+
+  // Collect all responses during page load
+  const responses: Response[] = [];
+  this.page.on('response', response => responses.push(response));
+
+  const response = await this.page.goto('https://practicesoftwaretesting.com/');
+  expect(response?.status()).toBe(200);
 
     await(this.returnHome)();
     await expect(this.navHome).toBeVisible();
